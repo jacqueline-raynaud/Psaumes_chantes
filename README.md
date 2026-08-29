@@ -1,20 +1,16 @@
-# 🧱 Template Android — Ktor · Hilt · Ksp · Room
+# 🎶 Psaumes chantés
 
-> **Un point de départ prêt à l'emploi pour mes apps Android.**
-
-Template personnel préconfigué avec les briques essentielles d'une application Android moderne. 
-L'objectif : ne plus repartir de zéro à chaque nouveau projet.
+Application Android personnelle pour écouter des psaumes chantés (mp3) hébergés en ligne, avec la possibilité d'y attacher une annotation personnelle.
 
 ---
 
-## 🎯 À quoi ça sert ?
+## 🎯 Fonctionnalités
 
-Quand je démarre une nouvelle app, je veux pouvoir me concentrer sur les **fonctionnalités métier** — pas sur la configuration de Hilt, Room ou Ktor pour la énième fois. Ce template me fournit une base solide et testée avec :
-
-- ✅ **Injection de dépendances** déjà câblée (Hilt)
-- ✅ **Base de données locale** prête à l'emploi (Room3 + Ksp)
-- ✅ **Client réseau** configuré (Ktor)
-- ✅ **Architecture Clean** en place (Repository pattern, séparation des couches)
+- Liste des psaumes disponibles, récupérée depuis le dossier distant
+- Lecture d'un mp3 en streaming (les fichiers ne sont jamais téléchargés sur l'appareil)
+- Pause / reprise / arrêt de la lecture
+- Avance et recul rapide (15 secondes) dans la piste en cours
+- Ajout, modification et suppression d'une annotation texte par psaume (boutons + et 🗑️)
 
 ---
 
@@ -22,61 +18,53 @@ Quand je démarre une nouvelle app, je veux pouvoir me concentrer sur les **fonc
 
 | Brique                 | Rôle |
 |------------------------|---|
-| **Kotlin**             | Langage principal |
-| **Jetpack Compose**    | UI déclarative |
+| **Kotlin / Jetpack Compose** | UI déclarative |
 | **Hilt**               | Injection de dépendances |
-| **Room**               | Base de données locale (SQLite) |
-| **KSP**                | Processeur d'annotations (remplace kapt) |
-| **Ktor Client**        | Appels réseau / API REST |
-| **Clean Architecture** | Séparation data / domain / presentation |
-| **Audio3**             | gestion des mp3 |
-
+| **Room3 + Ksp**         | Stockage local des annotations (SQLite) |
+| **Ktor Client**        | Récupération de la liste des mp3 |
+| **Media3 (ExoPlayer)** | Lecture audio en streaming |
+| **MVI**                | Architecture des écrans (State / Intent) |
 
 ---
 
 ## 📁 Structure du projet
 
 ```
-app/
-├── di/                 # Modules Hilt (DatabaseModule, NetworkModule…)
+app/src/main/java/fr/quinquenaire/psaumes_chantes/
+├── di/                     # Modules Hilt (réseau, base de données, repository)
 ├── data/
-│   ├── repository/     # pour les implémentations
-│   ├── appdatabase/    # Room
-│   ├── dao/            # Room
-│   ├── entities/       # Room
-│   ├── mapper/
-│   └── remote/         # Ktor (API Client, DTOs)
+│   ├── remote/             # Ktor : récupération + parsing du listing des mp3
+│   ├── local/               # Room : annotations (entité, dao, base)
+│   ├── player/              # Enveloppe autour de Media3 (ExoPlayer)
+│   └── repository/         # Implémentation du repository
 ├── domain/
-│   ├── model/          # Modèles métier
-│   ├── usecases/
-│   └── repository/     # Interfaces Repository
-├── presentation/
-│   ├── ui/             # Composables (écrans, composants)
-│   └── viewmodel/      # ViewModels
-
+│   ├── model/               # Modèles métier
+│   ├── repository/         # Interface du repository
+│   └── usecase/            # Cas d'usage
+└── presentation/
+    └── psaumes/             # Écran (MVI : contrat, ViewModel, stateful/stateless, previews)
 ```
 
 ---
 
-## 🚀 Comment l'utiliser
+## ⚙️ Configuration locale (obligatoire avant de lancer l'app)
 
-1. **Cliquer sur "Use this template"** sur GitHub (bouton vert)
-2. Nommer le nouveau dépôt avec le nom de ton projet
-3. Cloner et ouvrir dans Android Studio
-4. Renommer le package de base (`com.example.template` → `com.monapp`)
-5. Coder tes fonctionnalités métier — le socle est prêt !
+L'adresse du serveur hébergeant les mp3 n'est **jamais committée** : elle est lue à la compilation depuis `local.properties` (fichier ignoré par git).
+
+1. Copier `local.properties.sample` en `local.properties`
+2. Renseigner la clé `psaumes.baseUrl` avec l'adresse réelle du dossier (terminée par `/`)
+3. Lancer l'app depuis Android Studio
 
 ---
 
 ## 📝 Notes
 
-- Dernière modification  **août 2026**
-- Pensé pour mes projets personnels mais libre d'utilisation
-- Les versions des dépendances sont celles qui fonctionnent ensemble — vérifier les mises à jour avant de les bumper
+- Dernière modification **août 2026**
+- Application personnelle, pas destinée à être publiée
 
 ---
 
 ## 👩‍💻 Auteure
 
-**Jacqueline** — [@jacquelineRaynaud](https://github.com/jacqueline-raynaud)  
+**Jacqueline** — [@jacquelineRaynaud](https://github.com/jacqueline-raynaud)
 Développeuse Android · Formatrice 30 ans d'expérience · Kotlin & Compose enthusiast

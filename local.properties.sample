@@ -1,0 +1,5 @@
+# Copier ce fichier en "local.properties" (déjà ignoré par git) et compléter
+# l'adresse réelle du dossier hébergeant les mp3, terminée par un "/".
+#
+# sdk.dir=/chemin/vers/le/sdk/android
+psaumes.baseUrl=https://exemple.invalid/dossier-des-mp3/

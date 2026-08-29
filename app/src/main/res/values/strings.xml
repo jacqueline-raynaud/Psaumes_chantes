@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">Psaumes_chantes</string>
+    <string name="app_name">Psaumes chantés</string>
+
+    <string name="liste_titre">Psaumes chantés</string>
+    <string name="chargement">Chargement des psaumes…</string>
+    <string name="erreur_chargement_generique">Impossible de récupérer la liste des psaumes.</string>
+    <string name="reessayer">Réessayer</string>
+    <string name="liste_vide">Aucun psaume trouvé.</string>
+
+    <string name="action_lecture">Lecture</string>
+    <string name="action_pause">Pause</string>
+    <string name="action_stop">Arrêter</string>
+    <string name="action_reculer">Reculer de 15 secondes</string>
+    <string name="action_avancer">Avancer de 15 secondes</string>
+
+    <string name="annotation_ajouter">Ajouter une annotation</string>
+    <string name="annotation_modifier">Modifier l\'annotation</string>
+    <string name="annotation_supprimer">Supprimer l\'annotation</string>
+    <string name="annotation_champ_libelle">Votre annotation</string>
+    <string name="annotation_valider">Valider</string>
+    <string name="annotation_annuler">Annuler</string>
+    <string name="annotation_aucune">Aucune annotation pour ce psaume.</string>
 </resources>

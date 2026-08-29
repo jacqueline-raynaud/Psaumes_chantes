@@ -1,4 +1,4 @@
-package fr.quinquenaire.template_ktor_hilt_ksp_room.ui.theme
+package fr.quinquenaire.psaumes_chantes.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

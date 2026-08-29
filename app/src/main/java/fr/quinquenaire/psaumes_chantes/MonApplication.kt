@@ -1,4 +1,4 @@
-package fr.quinquenaire.template_ktor_hilt_ksp_room
+package fr.quinquenaire.psaumes_chantes
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

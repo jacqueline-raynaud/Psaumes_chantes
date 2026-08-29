@@ -1,6 +1,5 @@
-package fr.quinquenaire.template_ktor_hilt_ksp_room.ui.theme
+package fr.quinquenaire.psaumes_chantes.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -34,7 +33,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun Template_Ktor_Hilt_Ksp_RoomTheme(
+fun psaumes_chantesTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

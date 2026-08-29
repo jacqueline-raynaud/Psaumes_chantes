@@ -1,4 +1,4 @@
-package fr.quinquenaire.template_ktor_hilt_ksp_room
+package fr.quinquenaire.psaumes_chantes
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,14 +11,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import fr.quinquenaire.template_ktor_hilt_ksp_room.ui.theme.Template_Ktor_Hilt_Ksp_RoomTheme
+import fr.quinquenaire.psaumes_chantes.ui.theme.psaumes_chantesTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Template_Ktor_Hilt_Ksp_RoomTheme {
+            psaumes_chantesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -41,7 +42,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Template_Ktor_Hilt_Ksp_RoomTheme {
+    psaumes_chantesTheme {
         Greeting("Android")
     }
 }

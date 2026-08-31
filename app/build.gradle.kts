@@ -49,7 +49,7 @@ android {
                 "proguard-rules.pro"
             )
             optimization {
-                enable = false
+                enable = true
             }
         }
     }

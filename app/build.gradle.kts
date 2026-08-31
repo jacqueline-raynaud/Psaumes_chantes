@@ -11,8 +11,7 @@ room3 {
     schemaDirectory("$projectDir/schemas")   // OBLIGATOIRE avec le plugin
 }
 
-// L'adresse du serveur hébergeant les mp3 ne doit jamais être committée :
-// elle est lue depuis local.properties (fichier ignoré par git).
+// L'adresse du serveur hébergeant les mp3 est lue depuis local.properties
 // Voir local.properties.sample pour la clé attendue.
 val localProperties = Properties().apply {
     val localPropertiesFile = rootProject.file("local.properties")
@@ -42,6 +41,13 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             optimization {
                 enable = false
             }

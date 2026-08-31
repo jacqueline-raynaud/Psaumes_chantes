@@ -1,0 +1,43 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "ad75e930026349ca13f065e167632950",
+    "entities": [
+      {
+        "tableName": "annotations",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`fileName` TEXT NOT NULL, `texte` TEXT NOT NULL, `misAJourLe` INTEGER NOT NULL, PRIMARY KEY(`fileName`))",
+        "fields": [
+          {
+            "fieldPath": "fileName",
+            "columnName": "fileName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "texte",
+            "columnName": "texte",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "misAJourLe",
+            "columnName": "misAJourLe",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "fileName"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ad75e930026349ca13f065e167632950')"
+    ]
+  }
+}

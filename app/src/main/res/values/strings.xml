@@ -20,4 +20,5 @@
     <string name="annotation_valider">Valider</string>
     <string name="annotation_annuler">Annuler</string>
     <string name="annotation_aucune">Aucune annotation pour ce psaume.</string>
+    <string name="action_rejouer">Remettre au début</string>
 </resources>

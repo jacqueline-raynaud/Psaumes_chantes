@@ -69,6 +69,7 @@ class PsaumesListViewModel @Inject constructor(
             PsaumesListIntent.Rafraichir -> chargerPsaumes()
             is PsaumesListIntent.SelectionnerPsaume -> selectionnerPsaume(intent.psaume)
             PsaumesListIntent.BasculerLecturePause -> playerManager.basculerLecturePause()
+            PsaumesListIntent.Rejouer ->playerManager.rejouer()
             PsaumesListIntent.Arreter -> playerManager.arreter()
             PsaumesListIntent.Reculer -> playerManager.reculer()
             PsaumesListIntent.Avancer -> playerManager.avancer()

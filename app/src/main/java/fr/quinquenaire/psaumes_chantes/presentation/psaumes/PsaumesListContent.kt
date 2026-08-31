@@ -57,6 +57,7 @@ fun PsaumesListContent(
                     positionMs = state.positionMs,
                     dureeMs = state.dureeMs,
                     onBasculerLecturePause = { onIntent(PsaumesListIntent.BasculerLecturePause) },
+                    onRejouer ={onIntent(PsaumesListIntent.Rejouer)},
                     onArreter = { onIntent(PsaumesListIntent.Arreter) },
                     onReculer = { onIntent(PsaumesListIntent.Reculer) },
                     onAvancer = { onIntent(PsaumesListIntent.Avancer) },

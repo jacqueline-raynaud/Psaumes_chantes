@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Replay
 import androidx.compose.material.icons.filled.FastForward
+import androidx.compose.material.icons.filled.FastRewind
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -22,10 +23,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import fr.quinquenaire.psaumes_chantes.R
 import fr.quinquenaire.psaumes_chantes.domain.model.Psaume
 import fr.quinquenaire.psaumes_chantes.presentation.psaumes.formaterDuree
+import fr.quinquenaire.psaumes_chantes.ui.theme.PsaumesChantesTheme
 
 @Composable
 fun PlayerBar(
@@ -36,6 +39,7 @@ fun PlayerBar(
     dureeMs: Long,
     onBasculerLecturePause: () -> Unit,
     onArreter: () -> Unit,
+    onRejouer : () -> Unit,
     onReculer: () -> Unit,
     onAvancer: () -> Unit,
     modifier: Modifier = Modifier,
@@ -91,9 +95,16 @@ fun PlayerBar(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                IconButton(onClick = onReculer) {
+                IconButton(onClick = onRejouer) {
                     Icon(
                         imageVector = Icons.Filled.Replay,
+                        contentDescription = stringResource(R.string.action_rejouer),
+                    )
+                }
+
+                IconButton(onClick = onReculer) {
+                    Icon(
+                        imageVector = Icons.Filled.FastRewind,
                         contentDescription = stringResource(R.string.action_reculer),
                     )
                 }
@@ -123,5 +134,76 @@ fun PlayerBar(
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true, name = "PlayerBar - En lecture")
+@Composable
+private fun PlayerBarEnLecturePreview() {
+    PsaumesChantesTheme {
+        PlayerBar(
+            psaume = Psaume(
+                fileName = "psaume_23.mp3",
+                titre = "Psaume 23",
+                url = "",
+                annotation = "Pour la veillée du dimanche"
+            ),
+            enLecture = true,
+            enChargement = false,
+            positionMs = 45_000L,
+            dureeMs = 180_000L,
+            onBasculerLecturePause = {},
+            onRejouer = {},
+            onArreter = {},
+            onReculer = {},
+            onAvancer = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "PlayerBar - En pause")
+@Composable
+private fun PlayerBarEnPausePreview() {
+    PsaumesChantesTheme {
+        PlayerBar(
+            psaume = Psaume(
+                fileName = "psaume_23.mp3",
+                titre = "Psaume 23",
+                url = "",
+                annotation = null
+            ),
+            enLecture = false,
+            enChargement = false,
+            positionMs = 120_000L,
+            dureeMs = 180_000L,
+            onBasculerLecturePause = {},
+            onRejouer = {},
+            onArreter = {},
+            onReculer = {},
+            onAvancer = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "PlayerBar - En chargement")
+@Composable
+private fun PlayerBarEnChargementPreview() {
+    PsaumesChantesTheme {
+        PlayerBar(
+            psaume = Psaume(
+                fileName = "psaume_23.mp3",
+                titre = "Psaume 23",
+                url = ""
+            ),
+            enLecture = false,
+            enChargement = true,
+            positionMs = 0L,
+            dureeMs = 180_000L,
+            onBasculerLecturePause = {},
+            onRejouer = {},
+            onArreter = {},
+            onReculer = {},
+            onAvancer = {},
+        )
     }
 }

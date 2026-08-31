@@ -69,6 +69,13 @@ class PlayerManager @Inject constructor(
         if (player.isPlaying) player.pause() else player.play()
     }
 
+    fun rejouer() {
+        player.pause()
+        player.seekTo(0L)
+        _etat.update { it.copy(positionMs = 0L) }
+        player.play()
+    }
+
     fun arreter() {
         player.pause()
         player.seekTo(0L)

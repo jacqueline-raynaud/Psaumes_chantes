@@ -18,6 +18,7 @@ sealed interface PsaumesListIntent {
     data object Rafraichir : PsaumesListIntent
     data class SelectionnerPsaume(val psaume: Psaume) : PsaumesListIntent
     data object BasculerLecturePause : PsaumesListIntent
+    data object Rejouer : PsaumesListIntent
     data object Arreter : PsaumesListIntent
     data object Reculer : PsaumesListIntent
     data object Avancer : PsaumesListIntent
